@@ -35,23 +35,23 @@ class G81Relative
     center = points[24]
     top_left, top_middle, top_right, middle_left,
       middle_right, bottom_left,
-      bottom_center, bottom_right = points.values_at(0,3,6,21,27,42,45,48).map{|x| (x - center).round(4)}
+      bottom_center, bottom_right = points.values_at(0,3,6,21,27,42,45,48).map{|x| (x - center).round(2)}
 
     %Q{
       Raw values:
-      #{bottom_left}\t#{bottom_center}\t#{bottom_right}
-      #{middle_left}\t0\t#{middle_right}
       #{top_left}\t#{top_middle}\t#{top_right}
-
+      #{middle_left}\t0\t#{middle_right}
+      #{bottom_left}\t#{bottom_center}\t#{bottom_right}
+      
       Degrees:
-      #{convertDistanceToDegrees(bottom_left)}\t#{convertDistanceToDegrees(bottom_center)}\t#{convertDistanceToDegrees(bottom_right)}
-      #{convertDistanceToDegrees(middle_left)}\t0\t#{convertDistanceToDegrees(middle_right)}
       #{convertDistanceToDegrees(top_left)}\t#{convertDistanceToDegrees(top_middle)}\t#{convertDistanceToDegrees(top_right)}
+      #{convertDistanceToDegrees(middle_left)}\t0\t#{convertDistanceToDegrees(middle_right)}
+      #{convertDistanceToDegrees(bottom_left)}\t#{convertDistanceToDegrees(bottom_center)}\t#{convertDistanceToDegrees(bottom_right)}
 
       Fractional Turns:
-      #{convertDistanceToFractionalTurns(bottom_left)}\t#{convertDistanceToFractionalTurns(bottom_center)}\t#{convertDistanceToFractionalTurns(bottom_right)}
-      #{convertDistanceToFractionalTurns(middle_left)}\t0\t#{convertDistanceToFractionalTurns(middle_right)}
       #{convertDistanceToFractionalTurns(top_left)}\t#{convertDistanceToFractionalTurns(top_middle)}\t#{convertDistanceToFractionalTurns(top_right)}
+      #{convertDistanceToFractionalTurns(middle_left)}\t0\t#{convertDistanceToFractionalTurns(middle_right)}
+      #{convertDistanceToFractionalTurns(bottom_left)}\t#{convertDistanceToFractionalTurns(bottom_center)}\t#{convertDistanceToFractionalTurns(bottom_right)}
     }
   end
 end
